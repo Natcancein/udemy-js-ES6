@@ -56,7 +56,6 @@ el generador testingTeamIterator que tiene como parametro el integrante
  del testing team se hace la delegacion del generador y ahora se 
  unen ambos equipos*/
     yield* testingTeamGenerator;
-
 }
 
 function* TestingTeamIterator(team){
