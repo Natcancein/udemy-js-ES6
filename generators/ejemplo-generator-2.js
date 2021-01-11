@@ -70,3 +70,41 @@ for (let name of TeamIterator(engineeringTeam)){
 }
 
 console.log(names);
+
+// SYMBOL ITERATOR
+const testingTeam={
+    lead:'Amanda',
+    tester: 'Bill',
+    //permite eliminar otro generador y ponerlo dentro del mismo objeto
+    [Symbol.iterator]:function* (){
+        yield this.lead;
+        yield this.tester;
+    }
+}
+
+const engineeringTeam=
+{
+    
+    testingTeam,
+    size:3,
+    department: 'Engineering',
+    lead:'Jill',
+    manager: 'Alex',
+    engineer: 'Dave',
+    [Symbol.iterator]: function*(){
+        yield this.lead;
+        yield this.manager;
+        yield this.engineer;
+        yield* testingTeam;
+    }
+}
+
+
+const names =[];
+
+for (let name of engineeringTeam){
+    names.push(name);
+}
+
+console.log(names);
+
